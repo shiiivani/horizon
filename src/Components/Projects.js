@@ -1079,14 +1079,14 @@ function Projects() {
                             <p>Elegant retreat in a quiet Coral Gables setting. This home provides
                                 wonderful entertaining spaces with a chef kitchen opening
                             </p>
-                            <h6>Contact us</h6>
+                            {/* <h6>Contact us</h6>
                             <ul className="icon-list">
                                 <li><a href="contact-3.html"><i className="fas fa-map-marker-alt"></i></a></li>
                                 <li><a href="contact-3.html"><i className="fas fa-phone-alt"></i></a></li>
                                 <li><a href="signup.html"><i className="fas fa-envelope"></i></a></li>
                                 <li><a href="contact-3.html"><i className="fas fa-globe"></i></a></li>
                                 <li><a href="contact-3.html"><i className="fas fa-wifi"></i></a></li>
-                            </ul>
+                            </ul> */}
                         </div>
                     </div>
                     <div className="col-xl-9">
@@ -1270,15 +1270,15 @@ function Projects() {
     </footer>
     {/* <!-- footer end --> */}
 
-    {/* <!-- tap to top start --> 
+     {/* <!-- tap to top start --> 
     <div className="tap-top">
         <div>
             <i className="fas fa-arrow-up"></i>
         </div>
     </div>
-     <!-- tap to top end --> */}
+     {/* <!-- tap to top end --> */}
 
-    {/* <!-- customizer start --> */}
+    {/* <!-- customizer start --> 
     <div className="customizer-wrap">
         <div className="customizer-links">
             <i data-feather="settings"></i>
@@ -1327,8 +1327,8 @@ function Projects() {
                 </div>
             </div>
         </div>
-    </div>
-    </div>
+    </div>*/}
+                                    </div> 
   )
 }
 
