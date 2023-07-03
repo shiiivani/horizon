@@ -37,7 +37,7 @@ function Projects() {
                                         </li>
                                         <li className="dropdown">
                                             <a href="javascript:void(0)" className="nav-link menu-title">Home</a>
-                                            <ul className="nav-submenu menu-content">
+                                            {/* <ul className="nav-submenu menu-content">
                                                 <li><a href="layout-1.html">Slider filter search</a>
                                                 </li>
                                                 <li><a href="layout-2.html">Corporate</a>
@@ -62,11 +62,11 @@ function Projects() {
                                                 </li>
                                                 <li><a href="layout-12.html">Map with h-search</a>
                                                 </li>
-                                            </ul>
+                                            </ul> */}
                                         </li>
                                         <li className="dropdown">
                                             <a href="javascript:void(0)" className="nav-link menu-title">Projects</a>
-                                            <ul className="nav-submenu menu-content">
+                                            {/* <ul className="nav-submenu menu-content">
                                                 <li>
                                                     <a href="javascript:void(0)" className="menu-title-level1">Grid view</a>
                                                     <ul className="nav-sub-childmenu level1">
@@ -177,11 +177,11 @@ function Projects() {
                                                         </li>
                                                     </ul>
                                                 </li>
-                                            </ul>
+                                            </ul> */}
                                         </li>
                                         <li className="dropdown">
                                             <a href="javascript:void(0)" className="nav-link menu-title">About us</a>
-                                            <ul className="nav-submenu menu-content">
+                                            {/* <ul className="nav-submenu menu-content">
                                                 <li><a href="single-property-1.html">sticky tab or classic</a></li>
                                                 <li><a href="single-property-2.html">360 view</a></li>
                                                 <li><a href="single-property-3.html">Without top</a></li>
@@ -192,7 +192,7 @@ function Projects() {
                                                 <li><a href="single-property-8.html">image box</a></li>
                                                 <li><a href="single-property-9.html">Template breadcrumb</a></li>
                                                 <li><a href="single-property-10.html">modal details <span className="icon-trend label"><i className="fas fa-bolt"></i></span></a></li>
-                                            </ul>
+                                            </ul> */}
                                         </li>
                                         {/* <li className="mega-menu">
                                             <a href="javascript:void(0)" className="nav-link menu-title">
