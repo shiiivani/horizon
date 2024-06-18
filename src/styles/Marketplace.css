@@ -1,3 +1,11 @@
+.property-section .filter {
+    width: 100%
+} 
+
+.property-section ul {
+    padding-left: 0 !important;
+}
+ 
  .property1 {
     position: absolute;
    

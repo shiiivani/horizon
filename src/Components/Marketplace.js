@@ -336,16 +336,12 @@ function Projects() {
                     <h6>filter</h6>
                     <div className="row gx-2">
                       <div className="col-12">
-                        <div className="form-group col-sm-4">
+                        <div className="form-group col-sm-4 filter">
                           <select
                             className="form-control"
                             name="Sort"
                             style={{
-                              width: "190px",
                               fontSize: "0.85rem",
-                              height: "37px",
-                              position: "relative",
-                              left: "-18px",
                             }}
                             onChange={(e) => setPlace(e.target.value)}
                           >
@@ -358,16 +354,12 @@ function Projects() {
                         </div>
                       </div>
                       <div className="col-12">
-                        <div className="form-group col-sm-4">
+                        <div className="form-group col-sm-4 filter">
                           <select
                             className="form-control"
                             name="Sort"
                             style={{
-                              width: "190px",
                               fontSize: "0.85rem",
-                              height: "37px",
-                              position: "relative",
-                              left: "-18px",
                             }}
                             onChange={(e) => setPropertyType(e.target.value)}
                           >
@@ -379,16 +371,12 @@ function Projects() {
                         </div>
                       </div>
                       <div className="col-12">
-                        <div className="form-group col-sm-4">
+                        <div className="form-group col-sm-4 filter">
                           <select
                             className="form-control"
                             name="Sort"
                             style={{
-                              width: "190px",
                               fontSize: "0.85rem",
-                              height: "37px",
-                              position: "relative",
-                              left: "-18px",
                             }}
                             onChange={(e) => setMinInvestment(e.target.value)}
                           >
@@ -524,10 +512,7 @@ function Projects() {
                       className="form-control"
                       name="Sort"
                       style={{
-                        width: "150px",
                         fontSize: "0.9rem",
-                        position: "absolute",
-                        left: "120px",
                       }}
                       onChange={(e) => sortHandler(e.target.value)}
                     >
