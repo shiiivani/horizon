@@ -1,0 +1,17 @@
+ .property1 {
+    position: absolute;
+   
+}
+
+.feature-container {
+    position: relative;
+}
+
+.property2 {
+    position: absolute;
+    top: -70px;
+}
+
+.property-2 {
+    height: 100% !important
+}

@@ -1,0 +1,19 @@
+a {
+    text-decoration: none !important;
+}
+
+.dot-gradient .slick-dots li:nth-child(3) {
+    display: none;
+}
+
+.dot-gradient .slick-dots li:nth-child(4) {
+    display: none;
+}
+
+.dot-gradient .slick-dots li:nth-child(5) {
+    display: none;
+}
+
+.dot-gradient .slick-dots li:nth-child(6) {
+    display: none;
+}
