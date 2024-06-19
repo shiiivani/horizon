@@ -26,7 +26,7 @@ const Login = () => {
           console.log(error);
         });
     } else {
-      navigate("/horizon/login");
+      navigate("/login");
     }
   }, []);
 
@@ -39,7 +39,7 @@ const Login = () => {
 
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        navigate("/horizon/marketPlace");
+        navigate("/marketPlace");
         if (rememberMe) {
           localStorage.setItem("email", email);
           localStorage.setItem("password", password);
@@ -74,7 +74,7 @@ const Login = () => {
               <nav aria-label="breadcrumb" className="theme-breadcrumb">
                 <ol className="breadcrumb">
                   <li className="breadcrumb-item">
-                    <a href="/horizon">Home</a>
+                    <a href="/">Home</a>
                   </li>
                   <li className="breadcrumb-item active" aria-current="page">
                     Log in
@@ -159,7 +159,7 @@ const Login = () => {
                       <span>Remember me</span>
                     </label>
                     <a
-                      href="/horizon/forgotPassword"
+                      href="/forgotPassword"
                       className="font-rubik text-color-2"
                     >
                       Forgot password ?
@@ -175,7 +175,7 @@ const Login = () => {
                       Log in
                     </button>
                     <a
-                      href="/horizon/signup"
+                      href="/signup"
                       className="btn btn-dashed btn-pill color-2"
                     >
                       Create Account

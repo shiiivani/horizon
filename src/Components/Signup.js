@@ -26,7 +26,7 @@ const Signup = () => {
             userName: userName,
             uid: result.user.uid,
           });
-          navigate("/horizon/marketPlace");
+          navigate("/marketPlace");
           console.log("Document written with ID: ", docRef.id);
         } catch (e) {
           console.error("Error adding document: ", e);
@@ -53,7 +53,7 @@ const Signup = () => {
               <nav aria-label="breadcrumb" className="theme-breadcrumb">
                 <ol className="breadcrumb">
                   <li className="breadcrumb-item">
-                    <a href="/horizon">Home</a>
+                    <a href="/">Home</a>
                   </li>
                   <li className="breadcrumb-item active" aria-current="page">
                     Sign up
@@ -154,7 +154,7 @@ const Signup = () => {
                       Create Account
                     </button>
                     <a
-                      href="/horizon/login"
+                      href="/login"
                       className="btn btn-dashed btn-pill color-2"
                     >
                       Log in

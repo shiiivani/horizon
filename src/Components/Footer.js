@@ -39,7 +39,7 @@ function Footer() {
             <div className="row">
               <div className="col-xl-3">
                 <div className="footer-details text-center">
-                  <a href="/horizon">
+                  <a href="/">
                     <img
                       src={Logo}
                       alt=""
@@ -65,19 +65,19 @@ function Footer() {
                       </h5>
                       <ul className="footer-content">
                         <li>
-                          <a href="/horizon/home">Home</a>
+                          <a href="/home">Home</a>
                         </li>
                         <li>
-                          <a href="/horizon/marketplace">Marketplace</a>
+                          <a href="/marketplace">Marketplace</a>
                         </li>
                         <li>
-                          <a href="/horizon/aboutus">About us</a>
+                          <a href="/aboutus">About us</a>
                         </li>
                         {/* <li>
                           <a href="faq.html">Faq</a>
                         </li> */}
                         <li>
-                          <a href="/horizon/contact">Contact</a>
+                          <a href="/contact">Contact</a>
                         </li>
                       </ul>
                     </div>
@@ -250,7 +250,7 @@ function Footer() {
               <div className="col-xl-6 col-md-6 text-end">
                 <ul className="sub-footer-link">
                   <li>
-                    <a href="/horizon">Home</a>
+                    <a href="/">Home</a>
                   </li>
                   <li>
                     <a href="terms-conditions.html">Terms</a>
@@ -259,7 +259,7 @@ function Footer() {
                     <a href="privacy-policy.html">Privacy policy</a>
                   </li>
                   <li>
-                    <a href="/horizon/contact">Contact</a>
+                    <a href="/contact">Contact</a>
                   </li>
                 </ul>
               </div>

@@ -25,9 +25,9 @@ function PropertyDetails() {
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
       if (user) {
-        navigate(`/horizon/property-details/${id}`);
+        navigate(`/property-details/${id}`);
       } else {
-        navigate("/horizon/login");
+        navigate("/login");
       }
     });
   }, []);
@@ -1802,7 +1802,7 @@ function PropertyDetails() {
                       </ul>
                       <div className="property-btn d-flex">
                         <span>August 4, 2022</span>
-                        <a href="/horizon/property">
+                        <a href="/property">
                           <button
                             type="button"
                             onClick="document.location='/property'"
@@ -1914,7 +1914,7 @@ function PropertyDetails() {
                       </ul>
                       <div className="property-btn d-flex">
                         <span>July 18, 2022</span>
-                        <a href="/horizon/property">
+                        <a href="/property">
                           <button
                             type="button"
                             onClick="document.location='/property'"
@@ -2025,7 +2025,7 @@ function PropertyDetails() {
                       </ul>
                       <div className="property-btn d-flex">
                         <span>January 6, 2022</span>
-                        <a href="/horizon/property">
+                        <a href="/property">
                           <button
                             type="button"
                             onClick="document.location='/property'"

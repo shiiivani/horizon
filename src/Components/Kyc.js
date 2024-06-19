@@ -169,11 +169,7 @@ function Kyc() {
         uid: user.uid,
       });
       setSuccessAlert(true);
-      setTimeout(
-        () => setSuccessAlert(false),
-        navigate("/horizon/userProfile"),
-        3000
-      );
+      setTimeout(() => setSuccessAlert(false), navigate("/userProfile"), 3000);
     } catch (e) {
       console.error("Error adding document: ", e);
       setErr("* There is some problem in submitting the details.");
@@ -205,7 +201,7 @@ function Kyc() {
               <nav aria-label="breadcrumb" className="theme-breadcrumb">
                 <ol className="breadcrumb">
                   <li className="breadcrumb-item">
-                    <a href="/horizon">Home</a>
+                    <a href="/">Home</a>
                   </li>
                   <li className="breadcrumb-item active" aria-current="page">
                     KYC

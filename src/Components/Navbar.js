@@ -14,8 +14,8 @@ function Navbar() {
   const handleUser = () => {
     onAuthStateChanged(auth, (user) => {
       if (user) {
-        navigate("/horizon/userProfile");
-      } else navigate("/horizon/login");
+        navigate("/userProfile");
+      } else navigate("/login");
     });
   };
 
@@ -52,7 +52,7 @@ function Navbar() {
             <div className="col">
               <div className="menu">
                 <div className="brand-logo">
-                  <a href="/horizon">
+                  <a href="/">
                     <img src={Logo} alt="" className="img-fluid " />
                   </a>
                 </div>
@@ -79,13 +79,13 @@ function Navbar() {
                           </div>
                         </li>
                         <li className="dropdown">
-                          <a href="/horizon" className="nav-link menu-title">
+                          <a href="/" className="nav-link menu-title">
                             Home
                           </a>
                         </li>
                         <li className="dropdown">
                           <a
-                            href="/horizon/marketPlace"
+                            href="/marketPlace"
                             className="nav-link menu-title"
                           >
                             MarketPlace
@@ -96,36 +96,24 @@ function Navbar() {
                             showNavLinks ? "dropdown" : "dropdown dashboard"
                           }
                         >
-                          <a
-                            href="/horizon/dashboard"
-                            className="nav-link menu-title"
-                          >
+                          <a href="/dashboard" className="nav-link menu-title">
                             Dashboard
                           </a>
                         </li>
                         <li className="dropdown">
-                          <a
-                            href="/horizon/aboutus"
-                            className="nav-link menu-title"
-                          >
+                          <a href="/aboutus" className="nav-link menu-title">
                             About us
                           </a>
                         </li>
                         <li className="dropdown">
-                          <a
-                            href="/horizon/contact"
-                            className="nav-link menu-title"
-                          >
+                          <a href="/contact" className="nav-link menu-title">
                             Contact
                           </a>
                         </li>
                         <li
                           className={showNavLinks ? "dropdown" : "dropdown kyc"}
                         >
-                          <a
-                            href="/horizon/kyc"
-                            className="nav-link menu-title"
-                          >
+                          <a href="/kyc" className="nav-link menu-title">
                             KYC
                           </a>
                         </li>

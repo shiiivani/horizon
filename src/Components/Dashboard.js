@@ -44,13 +44,13 @@ function Dashboard() {
       .catch((error) => {
         console.log(error);
       });
-    navigate("/horizon/login");
+    navigate("/login");
   };
 
   useEffect(() => {
     onAuthStateChanged(auth, async (user) => {
       if (user) {
-        navigate("/horizon/dashboard");
+        navigate("/dashboard");
         try {
           const userDocsRef = doc(db, "users", user.uid);
           const userDocsSnapshot = await getDoc(userDocsRef);
@@ -62,7 +62,7 @@ function Dashboard() {
           console.error("Error fetching user documents:", error);
         }
       } else {
-        navigate("/horizon/login");
+        navigate("/login");
       }
     });
   }, []);
@@ -263,8 +263,8 @@ function Dashboard() {
   const handleUser = () => {
     onAuthStateChanged(auth, (user) => {
       if (user) {
-        navigate("/horizon/userProfile");
-      } else navigate("/horizon/login");
+        navigate("/userProfile");
+      } else navigate("/login");
     });
   };
 
@@ -284,7 +284,7 @@ function Dashboard() {
               <nav aria-label="breadcrumb" className="theme-breadcrumb">
                 <ol className="breadcrumb">
                   <li className="breadcrumb-item">
-                    <a href="/horizon">Home</a>
+                    <a href="/">Home</a>
                   </li>
                   <li className="breadcrumb-item active" aria-current="page">
                     Dashboard
@@ -336,14 +336,14 @@ function Dashboard() {
                 <div className="dashboard-list">
                   <ul className="nav nav-tabs right-line-tab">
                     <li className="nav-item">
-                      <a className="nav-link active" href="/horizon/dashboard">
+                      <a className="nav-link active" href="/dashboard">
                         Dashboard
                       </a>
                     </li>
                     {/* <li className="nav-item"><a className="nav-link active"
                                             href="user-listing.html">My Listing</a></li> */}
                     {/* <li className="nav-item"><a className="nav-link"
-                                            href="/horizon/userProfile">create property</a></li> */}
+                                            href="/userProfile">create property</a></li> */}
                     <li className="nav-item">
                       <a className="nav-link" onClick={handleUser}>
                         My profile
@@ -546,7 +546,7 @@ function Dashboard() {
                                   <span className="font-roboto">
                                     {list.city}
                                   </span>
-                                  <a href={`/horizon/property/${list.docId}`}>
+                                  <a href={`/property/${list.docId}`}>
                                     <h3>{list.propertyName}</h3>
                                   </a>
                                   <h6>₹{list.price}</h6>
@@ -583,7 +583,7 @@ function Dashboard() {
                                     <span>
                                       {list.minimumHoldPeriod} years investment
                                     </span>
-                                    <a href={`/horizon/property/${list.docId}`}>
+                                    <a href={`/property/${list.docId}`}>
                                       <button
                                         type="button"
                                         // onClick="document.place='/property'"
@@ -702,7 +702,7 @@ function Dashboard() {
                               </ul>
                               <div className="property-btn d-flex">
                                 <span>3 years investment</span>
-                                <a href="/horizon/property">
+                                <a href="/property">
                                   <button
                                     type="button"
                                     onClick="document.location='single-property-8.html'"

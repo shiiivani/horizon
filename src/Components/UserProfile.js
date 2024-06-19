@@ -33,13 +33,13 @@ function UserProfile() {
       .catch((error) => {
         console.log(error);
       });
-    navigate("/horizon/login");
+    navigate("/login");
   };
 
   useEffect(() => {
     onAuthStateChanged(auth, async (user) => {
       if (user) {
-        navigate("/horizon/userProfile");
+        navigate("/userProfile");
         try {
           const userDocsRef = doc(db, "users", user.uid);
           const userDocsSnapshot = await getDoc(userDocsRef);
@@ -51,7 +51,7 @@ function UserProfile() {
           console.error("Error fetching user documents:", error);
         }
       } else {
-        navigate("/horizon/login");
+        navigate("/login");
       }
     });
   }, []);
@@ -124,7 +124,7 @@ function UserProfile() {
               <nav aria-label="breadcrumb" className="theme-breadcrumb">
                 <ol className="breadcrumb">
                   <li className="breadcrumb-item">
-                    <a href="/horizon">Home</a>
+                    <a href="/">Home</a>
                   </li>
                   <li className="breadcrumb-item active" aria-current="page">
                     My profile
@@ -182,21 +182,18 @@ function UserProfile() {
                 <div className="dashboard-list">
                   <ul className="nav nav-tabs right-line-tab">
                     <li className="nav-item">
-                      <a className="nav-link" href="/horizon/dashboard">
+                      <a className="nav-link" href="/dashboard">
                         Dashboard
                       </a>
                     </li>
                     <li className="nav-item">
-                      <a
-                        className="nav-link active"
-                        href="/horizon/userProfile"
-                      >
+                      <a className="nav-link active" href="/userProfile">
                         My profile
                       </a>
                     </li>
                     <li className="nav-item" style={{ cursor: "pointer" }}>
                       <a
-                        // href=""
+                        // href="/"
                         // data-bs-toggle="modal"
                         // data-bs-target="#logout"
                         className="nav-link"

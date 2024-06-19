@@ -309,7 +309,7 @@ function Projects() {
               <nav aria-label="breadcrumb" className="theme-breadcrumb">
                 <ol className="breadcrumb">
                   <li className="breadcrumb-item">
-                    <a href="/horizon">Home</a>
+                    <a href="/">Home</a>
                   </li>
                   <li className="breadcrumb-item active" aria-current="page">
                     Marketplace
@@ -661,7 +661,7 @@ function Projects() {
                         </div>
                         <div className="property-details">
                           <span className="font-roboto">{list.city}</span>
-                          <a href={`/horizon/property-details/${list.docId}`}>
+                          <a href={`/property-details/${list.docId}`}>
                             <h3>{list.propertyName}</h3>
                           </a>
                           <h6>₹{list.price}</h6>
@@ -698,7 +698,7 @@ function Projects() {
                             <span>
                               {list.minimumHoldPeriod} years investment
                             </span>
-                            <a href={`/horizon/property-details/${list.docId}`}>
+                            <a href={`/property-details/${list.docId}`}>
                               <button
                                 type="button"
                                 // onClick="document.place='/property'"

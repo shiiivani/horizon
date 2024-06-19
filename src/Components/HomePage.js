@@ -165,7 +165,7 @@ function HomePage() {
                     </div>
                     <button
                       type="button"
-                      onClick={() => navigate("/horizon/marketPlace")}
+                      onClick={() => navigate("/marketPlace")}
                       className="btn btn-lg btn-gradient btn-pill color-2"
                     >
                       explore property
@@ -179,7 +179,7 @@ function HomePage() {
                           }}
                         >
                           <a
-                            href={`/horizon/marketPlace?type=${data}`}
+                            href={`/marketPlace?type=${data}`}
                             className="looking-icon"
                           >
                             <svg className="property-svg">
@@ -194,7 +194,7 @@ function HomePage() {
                           }}
                         >
                           <a
-                            href={`/horizon/marketPlace?type=${data}`}
+                            href={`/marketPlace?type=${data}`}
                             className="looking-icon"
                           >
                             <svg className="property-svg">
@@ -209,7 +209,7 @@ function HomePage() {
                           }}
                         >
                           <a
-                            href={`/horizon/marketPlace?type=${data}`}
+                            href={`/marketPlace?type=${data}`}
                             className="looking-icon"
                           >
                             <svg className="property-svg">
@@ -484,9 +484,7 @@ function HomePage() {
                         <div className="feature-content">
                           <div className="details">
                             <h3>
-                              <a
-                                href={`/horizon/property-details/${list.docId}`}
-                              >
+                              <a href={`/property-details/${list.docId}`}>
                                 <span>{list.propertyName} in</span> {list.city}{" "}
                               </a>
                             </h3>
@@ -536,7 +534,7 @@ function HomePage() {
                             </li>
                             <li>
                               <a
-                                href={`/horizon/property-details/${list.docId}`}
+                                href={`/property-details/${list.docId}`}
                                 className="btn btn-gradient btn-pill color-2 btn-lg"
                               >
                                 View property
@@ -703,7 +701,7 @@ function HomePage() {
 
                         <div className="property-details">
                           <span className="font-roboto">{list.city}</span>
-                          <a href={`/horizon/property-details/${list.docId}`}>
+                          <a href={`/property-details/${list.docId}`}>
                             <h3>{list.propertyName}</h3>
                           </a>
                           <h6>₹{list.price}</h6>
@@ -740,7 +738,7 @@ function HomePage() {
                             <span>
                               {list.minimumHoldPeriod} years investment
                             </span>
-                            <a href={`/horizon/property-details/${list.docId}`}>
+                            <a href={`/property-details/${list.docId}`}>
                               <button
                                 type="button"
                                 // onClick="document.location='/property'"
@@ -859,9 +857,7 @@ function HomePage() {
                             </div>
                             <div className="property-details">
                               <span className="font-roboto">{list.city}</span>
-                              <a
-                                href={`/horizon/property-details/${list.docId}`}
-                              >
+                              <a href={`/property-details/${list.docId}`}>
                                 <h3>{list.propertyName}</h3>
                               </a>
                               <h6 className="color-2">₹{list.price}</h6>
@@ -898,9 +894,7 @@ function HomePage() {
                                 <span>
                                   {list.minimumHoldPeriod} years investment
                                 </span>
-                                <a
-                                  href={`/horizon/property-details/${list.docId}`}
-                                >
+                                <a href={`/property-details/${list.docId}`}>
                                   <button
                                     type="button"
                                     // onClick="document.location='/property'"
@@ -945,7 +939,7 @@ function HomePage() {
                       className="img-fluid"
                       alt=""
                     />
-                    <a href={`/horizon/marketPlace?city=${city}`}>
+                    <a href={`/marketPlace?city=${city}`}>
                       <div
                         className="feature-bottom"
                         onClick={() => setCity(Object.keys(cityList)[0])}
@@ -963,7 +957,7 @@ function HomePage() {
                       className="img-fluid"
                       alt=""
                     />
-                    <a href={`/horizon/marketPlace?city=${city}`}>
+                    <a href={`/marketPlace?city=${city}`}>
                       <div
                         className="feature-bottom"
                         onClick={() => setCity(Object.keys(cityList)[1])}
@@ -981,7 +975,7 @@ function HomePage() {
                       className="img-fluid"
                       alt=""
                     />
-                    <a href={`/horizon/marketPlace?city=${city}`}>
+                    <a href={`/marketPlace?city=${city}`}>
                       <div
                         className="feature-bottom"
                         onClick={() => setCity(Object.keys(cityList)[2])}
@@ -1000,7 +994,7 @@ function HomePage() {
                         className="img-fluid"
                         alt=""
                       />
-                      <a href={`/horizon/marketPlace?city=${city}`}>
+                      <a href={`/marketPlace?city=${city}`}>
                         <div
                           className="feature-bottom"
                           onClick={() => setCity(Object.keys(cityList)[3])}
@@ -1022,7 +1016,7 @@ function HomePage() {
                         className="img-fluid"
                         alt=""
                       />
-                      <a href={`/horizon/marketPlace?city=${city}`}>
+                      <a href={`/marketPlace?city=${city}`}>
                         <div
                           className="feature-bottom"
                           onClick={() => setCity(Object.keys(cityList)[4])}
@@ -1044,7 +1038,7 @@ function HomePage() {
                         className="img-fluid"
                         alt=""
                       />
-                      <a href={`/horizon/marketPlace?city=${city}`}>
+                      <a href={`/marketPlace?city=${city}`}>
                         <div
                           className="feature-bottom"
                           onClick={() => setCity(Object.keys(cityList)[5])}
