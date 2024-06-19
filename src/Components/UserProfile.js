@@ -54,7 +54,7 @@ function UserProfile() {
         navigate("/login");
       }
     });
-  }, [user]);
+  }, []);
 
   useEffect(() => {
     if (user) {
@@ -73,7 +73,7 @@ function UserProfile() {
           console.error("Error getting document:", error);
         });
     }
-  }, [navigate]);
+  }, []);
 
   const reauthenticate = (currentPassword) => {
     const user = auth.currentUser;

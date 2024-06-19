@@ -65,7 +65,7 @@ function Dashboard() {
         navigate("/login");
       }
     });
-  }, [navigate]);
+  }, []);
 
   const nPages = Math.ceil(totalData / dataPerPage);
   const pageNumbers = [...Array(nPages + 1).keys()].slice(1);
@@ -108,7 +108,7 @@ function Dashboard() {
     };
 
     fetchInvestmentDetails();
-  }, [currentSortDirection, dataPerPage, setLoading, user?.uid]);
+  }, [user?.uid]);
 
   useEffect(() => {
     // console.log("counting", totalData);
@@ -153,7 +153,7 @@ function Dashboard() {
     if (investmentList.length > 0) {
       fetchList();
     }
-  }, [investmentList, setLoading]);
+  }, [investmentList]);
 
   const fetchNextDocuments = async () => {
     if (currentPage * dataPerPage >= totalData) {
@@ -284,7 +284,7 @@ function Dashboard() {
               <nav aria-label="breadcrumb" className="theme-breadcrumb">
                 <ol className="breadcrumb">
                   <li className="breadcrumb-item">
-                    <a href="/">Home</a>
+                    <a href="">Home</a>
                   </li>
                   <li className="breadcrumb-item active" aria-current="page">
                     Dashboard
