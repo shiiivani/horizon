@@ -73,7 +73,7 @@ function UserProfile() {
           console.error("Error getting document:", error);
         });
     }
-  }, [user]);
+  }, [navigate]);
 
   const reauthenticate = (currentPassword) => {
     const user = auth.currentUser;
