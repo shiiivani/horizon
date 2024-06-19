@@ -16,7 +16,6 @@ import {
   getDocs,
   orderBy,
   limit,
-  setDoc,
   doc,
   addDoc,
   updateDoc,
@@ -256,7 +255,7 @@ function HomePage() {
                       <Home />
                     </div>
                     <h3>
-                      <a>Property Management</a>
+                      <a href="#">Property Management</a>
                     </h3>
                     <p>
                       Property management is the control, maintenance of real
@@ -273,7 +272,7 @@ function HomePage() {
                       <DollarSign />
                     </div>
                     <h3>
-                      <a>Mortgage Services</a>
+                      <a href="#">Mortgage Services</a>
                     </h3>
                     <p>
                       Residences can be classNameified by and how they are
@@ -290,7 +289,7 @@ function HomePage() {
                       <Settings />
                     </div>
                     <h3>
-                      <a>Currency Services</a>
+                      <a href="#">Currency Services</a>
                     </h3>
                     <p>
                       A currency is standardization of money in any form when
@@ -307,7 +306,7 @@ function HomePage() {
                       <Bell />
                     </div>
                     <h3>
-                      <a>Get important notifications</a>
+                      <a href="#">Get important notifications</a>
                     </h3>
                     <p>
                       Residences can be classNameified by and how they are
@@ -324,7 +323,7 @@ function HomePage() {
                       <BookOpen />
                     </div>
                     <h3>
-                      <a>Transparency</a>
+                      <a href="#">Transparency</a>
                     </h3>
                     <p>
                       Apartments or flats on each floor and with shared entrance
@@ -341,7 +340,7 @@ function HomePage() {
                       <MapPin />
                     </div>
                     <h3>
-                      <a>Near by me</a>
+                      <a href="#">Near by me</a>
                     </h3>
                     <p>
                       Residences can be classNameified by and how they are
@@ -832,7 +831,7 @@ function HomePage() {
                         <div className="col-xl-4 col-md-6">
                           <div className="property-box">
                             <div className="property-image">
-                              <a>
+                              <a href="#">
                                 <img
                                   src={list.urlarray}
                                   className="bg-img"

@@ -1,12 +1,6 @@
 import React, { useState } from "react";
 import { auth, db } from "../FirebaseAuth/firebase";
-import {
-  collection,
-  addDoc,
-  serverTimestamp,
-  setDoc,
-  doc,
-} from "firebase/firestore";
+import { serverTimestamp, setDoc, doc } from "firebase/firestore";
 import { useAuthState } from "react-firebase-hooks/auth";
 import "../App.css";
 

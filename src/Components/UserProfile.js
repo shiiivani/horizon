@@ -9,14 +9,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { auth, db } from "../FirebaseAuth/firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
-import {
-  doc,
-  getDocs,
-  getDoc,
-  where,
-  query,
-  collection,
-} from "@firebase/firestore";
+import { doc, getDoc } from "@firebase/firestore";
 import "../App.css";
 
 function UserProfile() {
@@ -25,7 +18,6 @@ function UserProfile() {
   const [newPassword, setNewPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [err, setErr] = useState("");
-  const [alrt, setAlrt] = useState("");
   const [kycInfo, setKycInfo] = useState({});
   const [user] = useAuthState(auth);
   const [userInfo, setUserInfo] = useState([]);
@@ -236,7 +228,7 @@ function UserProfile() {
                                 </li> */}
                                 <li>
                                   <span>Phone number :</span>
-                                  <a>{kycInfo.phoneNumber}</a>
+                                  <a href="#">{kycInfo.phoneNumber}</a>
                                 </li>
                                 <li>
                                   <span>Address :</span>
@@ -256,11 +248,13 @@ function UserProfile() {
                               <ul>
                                 <li>
                                   <span>Email :</span>
-                                  <a>{user && user.email ? user.email : ""}</a>
+                                  <a href="#">
+                                    {user && user.email ? user.email : ""}
+                                  </a>
                                 </li>
                                 <li>
                                   <span>Password :</span>
-                                  <a>
+                                  <a href="#">
                                     &#9679;&#9679;&#9679;&#9679;&#9679;&#9679;
                                   </a>
                                   <span
@@ -286,7 +280,7 @@ function UserProfile() {
                                 </li>
                                 <li>
                                   <span>Phone number :</span>
-                                  <a>{kycInfo.phoneNumber}</a>
+                                  <a href="#">{kycInfo.phoneNumber}</a>
                                 </li>
                                 <li>
                                   <span>Pan Number :</span>

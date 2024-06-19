@@ -147,7 +147,7 @@ function AboutUs() {
                       <Activity />
                     </div>
                     <h3>
-                      <a>Tax Advantage</a>
+                      <a href="#">Tax Advantage</a>
                     </h3>
                     <p>
                       Residences can be classified by and how they are connected
@@ -161,7 +161,7 @@ function AboutUs() {
                       <Home />
                     </div>
                     <h3>
-                      <a>Property Insurance</a>
+                      <a href="#">Property Insurance</a>
                     </h3>
                     <p>
                       Residences can be classified by and how they are connected
@@ -175,7 +175,7 @@ function AboutUs() {
                       <DollarSign />
                     </div>
                     <h3>
-                      <a>Lowest Commission</a>
+                      <a href="#">Lowest Commission</a>
                     </h3>
                     <p>
                       Residences can be classified by and how they are connected

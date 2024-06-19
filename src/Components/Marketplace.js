@@ -427,19 +427,19 @@ function Projects() {
                     <div className="category-property">
                       <ul>
                         <li onClick={() => handleMinimumHoldPeriod(0, 2)}>
-                          <a>
+                          <a href="#">
                             <i className="fas fa-arrow-right me-2"></i>0-2 years{" "}
                             <span className="float-end"></span>
                           </a>
                         </li>
                         <li onClick={() => handleMinimumHoldPeriod(2, 5)}>
-                          <a>
+                          <a href="#">
                             <i className="fas fa-arrow-right me-2"></i>2-5 years{" "}
                             <span className="float-end"></span>
                           </a>
                         </li>
                         <li onClick={() => handleMinimumHoldPeriod(5, 10)}>
-                          <a>
+                          <a href="#">
                             <i className="fas fa-arrow-right me-2"></i>5-10
                             years <span className="float-end"></span>
                           </a>
@@ -447,7 +447,7 @@ function Projects() {
                         <li
                           onClick={() => handleMinimumHoldPeriod(10, undefined)}
                         >
-                          <a>
+                          <a href="#">
                             <i className="fas fa-arrow-right me-2"></i>More than
                             10 years <span className="float-end"></span>
                           </a>

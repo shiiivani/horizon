@@ -21,7 +21,6 @@ function PropertyDetails() {
   const [message, setMessage] = useState("");
   const [err, setErr] = useState("");
   const [investmentList, setInvestmentList] = useState([]);
-  const [investmentDate, setInvestmentDate] = useState("");
   const [user] = useAuthState(auth);
 
   useEffect(() => {
