@@ -427,67 +427,67 @@ function AboutUs() {
             <div className="col">
               <div className="slide-2 brand-slider">
                 <div>
-                  <a className="logo-box">
+                  <div className="logo-box">
                     <img
                       src="https://firebasestorage.googleapis.com/v0/b/crowdpe-6ba17.appspot.com/o/webassets%2Fbrand%2F6.png?alt=media&token=c2226830-c181-4bee-ba70-338491623403"
                       alt=""
                       className="img-fluid"
                     />
-                  </a>
+                  </div>
                 </div>
                 <div>
-                  <a className="logo-box">
+                  <div className="logo-box">
                     <img
                       src="https://firebasestorage.googleapis.com/v0/b/crowdpe-6ba17.appspot.com/o/webassets%2Fbrand%2F7.png?alt=media&token=e91e0b5b-ed83-4e94-aa19-74449ec1bef1"
                       alt=""
                       className="img-fluid"
                     />
-                  </a>
+                  </div>
                 </div>
                 <div>
-                  <a className="logo-box">
+                  <div className="logo-box">
                     <img
                       src="https://firebasestorage.googleapis.com/v0/b/crowdpe-6ba17.appspot.com/o/webassets%2Fbrand%2F8.png?alt=media&token=0c3ac302-d876-4457-bfda-234debe66064"
                       alt=""
                       className="img-fluid"
                     />
-                  </a>
+                  </div>
                 </div>
                 <div>
-                  <a className="logo-box">
+                  <div className="logo-box">
                     <img
                       src="https://firebasestorage.googleapis.com/v0/b/crowdpe-6ba17.appspot.com/o/webassets%2Fbrand%2F9.png?alt=media&token=fd2cd083-045d-4097-99c2-f2e970a3069b"
                       alt=""
                       className="img-fluid"
                     />
-                  </a>
+                  </div>
                 </div>
                 <div>
-                  <a className="logo-box">
+                  <div className="logo-box">
                     <img
                       src="https://firebasestorage.googleapis.com/v0/b/crowdpe-6ba17.appspot.com/o/webassets%2Fbrand%2F10.png?alt=media&token=cebfc026-e459-456f-a4c3-0dcba58076c9"
                       alt=""
                       className="img-fluid"
                     />
-                  </a>
+                  </div>
                 </div>
                 <div>
-                  <a className="logo-box">
+                  <div className="logo-box">
                     <img
                       src="https://firebasestorage.googleapis.com/v0/b/crowdpe-6ba17.appspot.com/o/webassets%2Fbrand%2F11.png?alt=media&token=63d1bc4a-033f-4649-8bc1-de750c8f0c39"
                       alt=""
                       className="img-fluid"
                     />
-                  </a>
+                  </div>
                 </div>
                 <div>
-                  <a className="logo-box">
+                  <div className="logo-box">
                     <img
                       src="https://firebasestorage.googleapis.com/v0/b/crowdpe-6ba17.appspot.com/o/webassets%2Fbrand%2F7.png?alt=media&token=e91e0b5b-ed83-4e94-aa19-74449ec1bef1"
                       alt=""
                       className="img-fluid"
                     />
-                  </a>
+                  </div>
                 </div>
               </div>
             </div>
