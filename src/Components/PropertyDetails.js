@@ -292,7 +292,10 @@ function PropertyDetails() {
                 </ul>
                 <div className="share-buttons">
                   <div className="d-inline-block">
-                    <a href="#" className="btn btn-gradient btn-pill color-2">
+                    <a
+                      href="javascript:void(0)"
+                      className="btn btn-gradient btn-pill color-2"
+                    >
                       <i className="far fa-share-square"></i>
                       share
                     </a>
@@ -326,14 +329,14 @@ function PropertyDetails() {
                     </div>
                   </div>
                   <a
-                    href="#"
+                    href="javascript:void(0)"
                     className="btn btn-dashed btn-pill color-2 ms-md-2 ms-1 save-btn"
                   >
                     <i className="far fa-heart"></i>
                     Save
                   </a>
                   <a
-                    href="#"
+                    href="javascript:void(0)"
                     className="btn btn-dashed btn-pill color-2 ms-md-2 ms-1"
                   >
                     <i data-feather="printer"></i>

@@ -54,7 +54,7 @@ function UserProfile() {
         navigate("/login");
       }
     });
-  }, []);
+  }, [user]);
 
   useEffect(() => {
     if (user) {
@@ -73,7 +73,7 @@ function UserProfile() {
           console.error("Error getting document:", error);
         });
     }
-  }, []);
+  }, [user]);
 
   const reauthenticate = (currentPassword) => {
     const user = auth.currentUser;
@@ -225,7 +225,7 @@ function UserProfile() {
                                 </li> */}
                                 <li>
                                   <span>Phone number :</span>
-                                  <a href="#">{kycInfo.phoneNumber}</a>
+                                  <p>{kycInfo.phoneNumber}</p>
                                 </li>
                                 <li>
                                   <span>Address :</span>
@@ -245,15 +245,14 @@ function UserProfile() {
                               <ul>
                                 <li>
                                   <span>Email :</span>
-                                  <a href="#">
-                                    {user && user.email ? user.email : ""}
-                                  </a>
+
+                                  <p>{user && user.email ? user.email : ""}</p>
                                 </li>
                                 <li>
                                   <span>Password :</span>
-                                  <a href="#">
+                                  <p>
                                     &#9679;&#9679;&#9679;&#9679;&#9679;&#9679;
-                                  </a>
+                                  </p>
                                   <span
                                     data-bs-toggle="modal"
                                     data-bs-target="#edit-password"
@@ -277,7 +276,7 @@ function UserProfile() {
                                 </li>
                                 <li>
                                   <span>Phone number :</span>
-                                  <a href="#">{kycInfo.phoneNumber}</a>
+                                  <p>{kycInfo.phoneNumber}</p>
                                 </li>
                                 <li>
                                   <span>Pan Number :</span>

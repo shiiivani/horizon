@@ -254,9 +254,7 @@ function HomePage() {
                     <div className="icon-round">
                       <Home />
                     </div>
-                    <h3>
-                      <a href="#">Property Management</a>
-                    </h3>
+                    <h3>Property Management</h3>
                     <p>
                       Property management is the control, maintenance of real
                       estate and physical property.
@@ -271,9 +269,7 @@ function HomePage() {
                     <div className="icon-round">
                       <DollarSign />
                     </div>
-                    <h3>
-                      <a href="#">Mortgage Services</a>
-                    </h3>
+                    <h3>Mortgage Services</h3>
                     <p>
                       Residences can be classNameified by and how they are
                       connected to neighbouring residences and land.
@@ -288,9 +284,7 @@ function HomePage() {
                     <div className="icon-round">
                       <Settings />
                     </div>
-                    <h3>
-                      <a href="#">Currency Services</a>
-                    </h3>
+                    <h3>Currency Services</h3>
                     <p>
                       A currency is standardization of money in any form when
                       use or circulation as medium of exchange.
@@ -305,9 +299,7 @@ function HomePage() {
                     <div className="icon-round">
                       <Bell />
                     </div>
-                    <h3>
-                      <a href="#">Get important notifications</a>
-                    </h3>
+                    <h3>Get important notifications</h3>
                     <p>
                       Residences can be classNameified by and how they are
                       connected to neighbouring residences and land.
@@ -322,9 +314,7 @@ function HomePage() {
                     <div className="icon-round">
                       <BookOpen />
                     </div>
-                    <h3>
-                      <a href="#">Transparency</a>
-                    </h3>
+                    <h3>Transparency</h3>
                     <p>
                       Apartments or flats on each floor and with shared entrance
                       stairway access found in Britain.
@@ -339,9 +329,7 @@ function HomePage() {
                     <div className="icon-round">
                       <MapPin />
                     </div>
-                    <h3>
-                      <a href="#">Near by me</a>
-                    </h3>
+                    <h3>Near by me</h3>
                     <p>
                       Residences can be classNameified by and how they are
                       connected to neighbouring residences and land.
@@ -771,34 +759,31 @@ function HomePage() {
               </div>
               <ul id="tabs" className="nav nav-tabs">
                 <li className="nav-item" onClick={() => setType("Residential")}>
-                  <a
-                    href="#"
+                  <p
                     data-bs-target="#morden"
                     data-bs-toggle="tab"
                     className="nav-link active"
                   >
                     Residential
-                  </a>
+                  </p>
                 </li>
                 <li className="nav-item" onClick={() => setType("Commercial")}>
-                  <a
-                    href="#"
+                  <p
                     data-bs-target="#family"
                     data-bs-toggle="tab"
                     className="nav-link"
                   >
                     Commercial
-                  </a>
+                  </p>
                 </li>
                 <li className="nav-item" onClick={() => setType("Land")}>
-                  <a
-                    href="#"
+                  <p
                     data-bs-target="#town"
                     data-bs-toggle="tab"
                     className="nav-link"
                   >
                     Land
-                  </a>
+                  </p>
                 </li>
                 {/* <li className="nav-item">
                   <a
@@ -829,15 +814,14 @@ function HomePage() {
                         <div className="col-xl-4 col-md-6">
                           <div className="property-box">
                             <div className="property-image">
-                              <a href="#">
-                                <img
-                                  src={list.urlarray}
-                                  className="bg-img"
-                                  alt=""
-                                  width="500px"
-                                  height="340px"
-                                />
-                              </a>
+                              <img
+                                src={list.urlarray}
+                                className="bg-img"
+                                alt=""
+                                width="500px"
+                                height="340px"
+                              />
+
                               <div className="labels-left">
                                 <div>
                                   <span className="label label-shadow">

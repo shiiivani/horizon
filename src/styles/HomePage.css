@@ -2,6 +2,10 @@ a {
     text-decoration: none !important;
 }
 
+.nav-item .nav-link:hover {
+    cursor: pointer
+}
+
 .dot-gradient .slick-dots li:nth-child(3) {
     display: none;
 }

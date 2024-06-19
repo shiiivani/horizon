@@ -426,28 +426,40 @@ function Projects() {
                     <h6>Minimum Holding Period</h6>
                     <div className="category-property">
                       <ul>
-                        <li onClick={() => handleMinimumHoldPeriod(0, 2)}>
-                          <a href="#">
+                        <li>
+                          <a
+                            href="javascript:void(0)"
+                            onClick={() => handleMinimumHoldPeriod(0, 2)}
+                          >
                             <i className="fas fa-arrow-right me-2"></i>0-2 years{" "}
                             <span className="float-end"></span>
                           </a>
                         </li>
-                        <li onClick={() => handleMinimumHoldPeriod(2, 5)}>
-                          <a href="#">
+                        <li>
+                          <a
+                            href="javascript:void(0)"
+                            onClick={() => handleMinimumHoldPeriod(2, 5)}
+                          >
                             <i className="fas fa-arrow-right me-2"></i>2-5 years{" "}
                             <span className="float-end"></span>
                           </a>
                         </li>
-                        <li onClick={() => handleMinimumHoldPeriod(5, 10)}>
-                          <a href="#">
+                        <li>
+                          <a
+                            href="javascript:void(0)"
+                            onClick={() => handleMinimumHoldPeriod(5, 10)}
+                          >
                             <i className="fas fa-arrow-right me-2"></i>5-10
                             years <span className="float-end"></span>
                           </a>
                         </li>
-                        <li
-                          onClick={() => handleMinimumHoldPeriod(10, undefined)}
-                        >
-                          <a href="#">
+                        <li>
+                          <a
+                            href="javascript:void(0)"
+                            onClick={() =>
+                              handleMinimumHoldPeriod(10, undefined)
+                            }
+                          >
                             <i className="fas fa-arrow-right me-2"></i>More than
                             10 years <span className="float-end"></span>
                           </a>

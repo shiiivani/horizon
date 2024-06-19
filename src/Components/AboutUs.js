@@ -146,9 +146,7 @@ function AboutUs() {
                     <div className="icon-round">
                       <Activity />
                     </div>
-                    <h3>
-                      <a href="#">Tax Advantage</a>
-                    </h3>
+                    <h3>Tax Advantage</h3>
                     <p>
                       Residences can be classified by and how they are connected
                       to neighbouring residences and land
@@ -160,9 +158,7 @@ function AboutUs() {
                     <div className="icon-round">
                       <Home />
                     </div>
-                    <h3>
-                      <a href="#">Property Insurance</a>
-                    </h3>
+                    <h3>Property Insurance</h3>
                     <p>
                       Residences can be classified by and how they are connected
                       to neighbouring residences and land.
@@ -174,9 +170,7 @@ function AboutUs() {
                     <div className="icon-round">
                       <DollarSign />
                     </div>
-                    <h3>
-                      <a href="#">Lowest Commission</a>
-                    </h3>
+                    <h3>Lowest Commission</h3>
                     <p>
                       Residences can be classified by and how they are connected
                       to neighbouring residences and land.
