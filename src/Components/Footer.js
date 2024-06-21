@@ -92,19 +92,19 @@ function Footer() {
                       </h5>
                       <ul className="footer-content">
                         <li>
-                          <a href="services.html">Services</a>
+                          <a href="#">Services</a>
                         </li>
                         <li>
-                          <a href="agency-list.html">Agency</a>
+                          <a href="#">Agency</a>
                         </li>
                         <li>
-                          <a href="agent-grid.html">Agents</a>
+                          <a href="#">Agents</a>
                         </li>
                         <li>
-                          <a href="pricing.html">Pricing</a>
+                          <a href="#">Pricing</a>
                         </li>
                         <li>
-                          <a href="user-favourites.html">Favourites</a>
+                          <a href="#">Favourites</a>
                         </li>
                       </ul>
                     </div>

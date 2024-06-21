@@ -473,16 +473,16 @@ function Projects() {
                     <div className="category-property">
                       <ul>
                         <li style={{ fontSize: "0.71rem" }}>
-                          <i data-feather="map-pin" className="me-2"></i>Vasanth
-                          Nagar, Bengaluru, Karnataka
+                          <i data-feather="map-pin" className="me-2"></i>
+                          Koramangala , Bengaluru, Karnataka
                         </li>
                         <li style={{ fontSize: "0.71rem" }}>
                           <i data-feather="phone-call" className="me-2"></i>+91
-                          9902164321
+                          9483647889
                         </li>
                         <li style={{ fontSize: "0.71rem" }}>
                           <i data-feather="mail" className="me-2"></i>
-                          rahul05majage@gmail.com
+                          horizon@gmail.com
                         </li>
                       </ul>
                     </div>
