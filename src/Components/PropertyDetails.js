@@ -7,8 +7,8 @@ import { auth } from "../FirebaseAuth/firebase";
 import { useNavigate } from "react-router-dom";
 import { onAuthStateChanged } from "firebase/auth";
 import { useAuthState } from "react-firebase-hooks/auth";
-import "bootstrap/dist/css/bootstrap.min.css";
-import "bootstrap/dist/js/bootstrap.bundle.min";
+// import "bootstrap/dist/css/bootstrap.min.css";
+// import "bootstrap/dist/js/bootstrap.bundle.min";
 
 function PropertyDetails() {
   const [propertyDetails, setPropertyDetails] = useState({});
@@ -227,7 +227,7 @@ function PropertyDetails() {
                   {propertyDetails.address}, {propertyDetails.landmark},{" "}
                   {propertyDetails.city}, {propertyDetails.country}
                 </p>
-                <ul>
+                <ul style={{ paddingLeft: 0 }}>
                   <li>
                     <div>
                       <img
