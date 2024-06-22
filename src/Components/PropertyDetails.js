@@ -22,15 +22,15 @@ function PropertyDetails() {
   const [investmentList, setInvestmentList] = useState([]);
   const [user] = useAuthState(auth);
 
-  useEffect(() => {
-    onAuthStateChanged(auth, (user) => {
-      if (user) {
-        navigate(`/property-details/${id}`);
-      } else {
-        navigate("/login");
-      }
-    });
-  }, []);
+  // useEffect(() => {
+  //   onAuthStateChanged(auth, (user) => {
+  //     if (user) {
+  //       navigate(`/property-details/${id}`);
+  //     } else {
+  //       navigate("/login");
+  //     }
+  //   });
+  // }, []);
 
   useEffect(() => {
     const docRef = doc(db, `propertyDetails/${id}`);
