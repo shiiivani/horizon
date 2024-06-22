@@ -472,9 +472,9 @@ function HomePage() {
                         <div className="feature-content">
                           <div className="details">
                             <h3>
-                              <a href={`/property-details/${list.docId}`}>
+                              <Link to={`/property-details/${list.docId}`}>
                                 <span>{list.propertyName} in</span> {list.city}{" "}
-                              </a>
+                              </Link>
                             </h3>
                             <span>
                               {list.address}, {list.city}, {list.country}
@@ -689,9 +689,9 @@ function HomePage() {
 
                         <div className="property-details">
                           <span className="font-roboto">{list.city}</span>
-                          <a href={`/property-details/${list.docId}`}>
+                          <Link to={`/property-details/${list.docId}`}>
                             <h3>{list.propertyName}</h3>
-                          </a>
+                          </Link>
                           <h6>₹{list.price}</h6>
                           <p className="font-roboto">
                             {excerptHtml(list.description, 120)}
@@ -726,7 +726,7 @@ function HomePage() {
                             <span>
                               {list.minimumHoldPeriod} years investment
                             </span>
-                            <a href={`/property-details/${list.docId}`}>
+                            <Link to={`/property-details/${list.docId}`}>
                               <button
                                 type="button"
                                 // onClick="document.location='/property'"
@@ -734,7 +734,7 @@ function HomePage() {
                               >
                                 Details
                               </button>
-                            </a>
+                            </Link>
                           </div>
                         </div>
                       </div>
@@ -841,9 +841,9 @@ function HomePage() {
                             </div>
                             <div className="property-details">
                               <span className="font-roboto">{list.city}</span>
-                              <a href={`/property-details/${list.docId}`}>
+                              <Link to={`/property-details/${list.docId}`}>
                                 <h3>{list.propertyName}</h3>
-                              </a>
+                              </Link>
                               <h6 className="color-2">₹{list.price}</h6>
                               <p className="font-roboto">
                                 {excerptHtml(list.description, 120)}
@@ -878,7 +878,7 @@ function HomePage() {
                                 <span>
                                   {list.minimumHoldPeriod} years investment
                                 </span>
-                                <a href={`/property-details/${list.docId}`}>
+                                <Link to={`/property-details/${list.docId}`}>
                                   <button
                                     type="button"
                                     // onClick="document.location='/property'"
@@ -886,7 +886,7 @@ function HomePage() {
                                   >
                                     Details
                                   </button>
-                                </a>
+                                </Link>
                               </div>
                             </div>
                           </div>

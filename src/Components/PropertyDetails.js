@@ -1171,7 +1171,7 @@ function PropertyDetails() {
                             alt=""
                           />
                           <div className="media-body ms-2">
-                            <h6>Jonathan Scott</h6>
+                            <h6>Ella Scott</h6>
                             <p>horizon@gmail.com</p>
                           </div>
                         </div>

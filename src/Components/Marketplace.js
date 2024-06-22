@@ -14,7 +14,7 @@ import excerptHtml from "excerpt-html";
 import "bootstrap";
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap/dist/js/bootstrap.js";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import "../App.css";
 
 function Projects() {
@@ -673,9 +673,9 @@ function Projects() {
                         </div>
                         <div className="property-details">
                           <span className="font-roboto">{list.city}</span>
-                          <a href={`/property-details/${list.docId}`}>
+                          <Link to={`/property-details/${list.docId}`}>
                             <h3>{list.propertyName}</h3>
-                          </a>
+                          </Link>
                           <h6>₹{list.price}</h6>
                           <p className="font-roboto">
                             {excerptHtml(list.description, 120)}
@@ -710,7 +710,7 @@ function Projects() {
                             <span>
                               {list.minimumHoldPeriod} years investment
                             </span>
-                            <a href={`/property-details/${list.docId}`}>
+                            <Link to={`/property-details/${list.docId}`}>
                               <button
                                 type="button"
                                 // onClick="document.place='/property'"
@@ -718,7 +718,7 @@ function Projects() {
                               >
                                 Details
                               </button>
-                            </a>
+                            </Link>
                           </div>
                         </div>
                       </div>
