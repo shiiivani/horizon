@@ -956,11 +956,7 @@ function PropertyDetails() {
                     <div className="page-section" id="details">
                       <h4 className="content-title">
                         Investment Details
-                        <a
-                          href="https://www.google.com/maps/place/New+York,+NY,+Bangalore/@40.697488,-73.979681,8z/data=!4m5!3m4!1s0x89c24fa5d33f083b:0xc80b8f06e177fe62!8m2!3d40.7127753!4d-74.0059728?hl=en"
-                          target="_blank"
-                          rel="noreferrer"
-                        >
+                        <a href="#location" rel="noreferrer">
                           <i className="fas fa-map-marker-alt"></i> view on map
                         </a>
                       </h4>
@@ -1040,7 +1036,7 @@ function PropertyDetails() {
                       />
                     </div>
                   </div>
-                  <div className="desc-box">
+                  <div className="desc-box" id="location">
                     <div className="page-section" id="location-map">
                       <h4 className="content-title">Location</h4>
                       <iframe
