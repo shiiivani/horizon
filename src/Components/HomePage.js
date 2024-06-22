@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { FaKey, FaHouseUser, FaBuilding } from "react-icons/fa";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {
   Home,
   DollarSign,
@@ -521,12 +521,12 @@ function HomePage() {
                               <h6>Home For Sale</h6>
                             </li>
                             <li>
-                              <a
-                                href="/property-details/2LCmq1kzFV8TukMUCUvI"
+                              <Link
+                                href={`/property-details/${list.docId}`}
                                 className="btn btn-gradient btn-pill color-2 btn-lg"
                               >
                                 View property
-                              </a>
+                              </Link>
                             </li>
                           </ul>
                         </div>
