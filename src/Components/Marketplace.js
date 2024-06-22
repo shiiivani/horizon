@@ -342,6 +342,9 @@ function Projects() {
                             name="Sort"
                             style={{
                               fontSize: "0.85rem",
+                              width: "200px",
+                              position: "relative",
+                              left: "-15px",
                             }}
                             onChange={(e) => setPlace(e.target.value)}
                           >
@@ -360,6 +363,9 @@ function Projects() {
                             name="Sort"
                             style={{
                               fontSize: "0.85rem",
+                              width: "200px",
+                              position: "relative",
+                              left: "-15px",
                             }}
                             onChange={(e) => setPropertyType(e.target.value)}
                           >
@@ -377,6 +383,9 @@ function Projects() {
                             name="Sort"
                             style={{
                               fontSize: "0.85rem",
+                              width: "200px",
+                              position: "relative",
+                              left: "-15px",
                             }}
                             onChange={(e) => setMinInvestment(e.target.value)}
                           >
@@ -673,9 +682,7 @@ function Projects() {
                         </div>
                         <div className="property-details">
                           <span className="font-roboto">{list.city}</span>
-                          <Link to={`/property-details/${list.docId}`}>
-                            <h3>{list.propertyName}</h3>
-                          </Link>
+                          <h3>{list.propertyName}</h3>
                           <h6>₹{list.price}</h6>
                           <p className="font-roboto">
                             {excerptHtml(list.description, 120)}

@@ -365,7 +365,7 @@ function HomePage() {
                       <div className="col-xl-6 col-lg-5">
                         <div className="feature-image property-slider mb-0">
                           <div
-                            id="carouselExampleIndicators"
+                            id={`carouselExampleIndicators-${list.id}`}
                             className="carousel slide"
                             data-ride="carousel"
                           >
@@ -443,7 +443,7 @@ function HomePage() {
                             </div>
                             <a
                               className="carousel-control-prev"
-                              href="#carouselExampleIndicators"
+                              href={`#carouselExampleIndicators-${list.id}`}
                               role="button"
                               data-slide="prev"
                             >
@@ -455,7 +455,7 @@ function HomePage() {
                             </a>
                             <a
                               className="carousel-control-next"
-                              href="#carouselExampleIndicators"
+                              href={`#carouselExampleIndicators-${list.id}`}
                               role="button"
                               data-slide="next"
                             >
@@ -472,9 +472,7 @@ function HomePage() {
                         <div className="feature-content">
                           <div className="details">
                             <h3>
-                              <Link to={`/property-details/${list.docId}`}>
-                                <span>{list.propertyName} in</span> {list.city}
-                              </Link>
+                              <span>{list.propertyName} in</span> {list.city}
                             </h3>
                             <span>
                               {list.address}, {list.city}, {list.country}
@@ -566,37 +564,38 @@ function HomePage() {
                               data-ride="carousel"
                               data-interval="false"
                             >
+                              {/* <ol className="carousel-indicators">
+                                                                                        <li data-target="#carouselExampleIndicators" data-slide-to="0" className="active"></li>
+                                                                                        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                                                                                        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                                                                                    </ol> */}
                               <div className="carousel-inner">
                                 <div className="carousel-item active">
                                   <img
                                     className="d-block w-100"
-                                    src={list.urlarray?.[0]}
+                                    src={list.urlarray[0]}
                                     alt="First slide"
                                     width="600px"
-                                    height="400px"
+                                    height="300px"
                                   />
                                 </div>
-                                {list.urlarray?.[1] ? (
-                                  <div className="carousel-item">
-                                    <img
-                                      className="d-block w-100"
-                                      src={list.urlarray?.[1]}
-                                      alt="Second slide"
-                                      width="600px"
-                                      height="400px"
-                                    />
-                                  </div>
-                                ) : (
-                                  ""
-                                )}
+                                <div className="carousel-item">
+                                  <img
+                                    className="d-block w-100"
+                                    src={list.urlarray[1]}
+                                    alt="Second slide"
+                                    width="600px"
+                                    height="300px"
+                                  />
+                                </div>
                                 {list.urlarray?.[2] ? (
                                   <div className="carousel-item">
                                     <img
                                       className="d-block w-100"
-                                      src={list.urlarray?.[2]}
+                                      src={list.urlarray[2]}
                                       alt="Third slide"
                                       width="600px"
-                                      height="400px"
+                                      height="300px"
                                     />
                                   </div>
                                 ) : (
@@ -606,10 +605,10 @@ function HomePage() {
                                   <div className="carousel-item">
                                     <img
                                       className="d-block w-100"
-                                      src={list.urlarray?.[3]}
+                                      src={list.urlarray[3]}
                                       alt="Fourth slide"
                                       width="600px"
-                                      height="400px"
+                                      height="300px"
                                     />
                                   </div>
                                 ) : (
@@ -621,8 +620,8 @@ function HomePage() {
                                       className="d-block w-100"
                                       src={list.urlarray?.[4]}
                                       alt="fifth slide"
-                                      width="600px"
-                                      height="400px"
+                                      width="1450px"
+                                      height="700px"
                                     />
                                   </div>
                                 ) : (
@@ -634,8 +633,8 @@ function HomePage() {
                                       className="d-block w-100"
                                       src={list.urlarray?.[5]}
                                       alt="Sixth slide"
-                                      width="600px"
-                                      height="400px"
+                                      width="1450px"
+                                      height="700px"
                                     />
                                   </div>
                                 ) : (
@@ -650,7 +649,7 @@ function HomePage() {
                               >
                                 <span
                                   className="carousel-control-prev"
-                                  // aria-hidden="true"
+                                  aria-hidden="true"
                                 ></span>
                                 <span className="sr-only">Previous</span>
                               </a>
@@ -838,9 +837,7 @@ function HomePage() {
                             </div>
                             <div className="property-details">
                               <span className="font-roboto">{list.city}</span>
-                              <Link to={`/property-details/${list.docId}`}>
-                                <h3>{list.propertyName}</h3>
-                              </Link>
+                              <h3>{list.propertyName}</h3>
                               <h6 className="color-2">₹{list.price}</h6>
                               <p className="font-roboto">
                                 {excerptHtml(list.description, 120)}
