@@ -1,16 +1,26 @@
 import { useState, useEffect } from "react";
 import "../styles/PropertyDetails.css";
-import { getDoc, doc } from "firebase/firestore";
+import { getDoc, doc, getDocs, collection } from "firebase/firestore";
 import { db } from "../FirebaseAuth/firebase";
 import { useParams } from "react-router-dom";
 import { auth } from "../FirebaseAuth/firebase";
 import { useNavigate } from "react-router-dom";
 import { onAuthStateChanged } from "firebase/auth";
+import { useAuthState } from "react-firebase-hooks/auth";
+// import "bootstrap/dist/css/bootstrap.min.css";
+// import "bootstrap/dist/js/bootstrap.bundle.min";
 
 function PropertyDetails() {
   const [propertyDetails, setPropertyDetails] = useState({});
   const { id } = useParams();
   const navigate = useNavigate();
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [message, setMessage] = useState("");
+  const [err, setErr] = useState("");
+  const [investmentList, setInvestmentList] = useState([]);
+  const [user] = useAuthState(auth);
 
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
@@ -29,46 +39,60 @@ function PropertyDetails() {
     });
   }, [id]);
 
+  useEffect(() => {
+    const fetchInvestmentDetails = async () => {
+      // let investment = [];
+      try {
+        const investmentDetailsRef = collection(
+          db,
+          "investedProperties",
+          user?.uid,
+          "investmentDetails"
+        );
+
+        const querySnapshot = await getDocs(investmentDetailsRef);
+        querySnapshot.forEach((doc) => {
+          setInvestmentList({ ...doc.data() });
+        });
+        // setInvestmentList(investment);
+      } catch (error) {
+        // console.error("Error fetching investment details:", error);
+      }
+    };
+    fetchInvestmentDetails();
+  }, [user?.uid]);
+
+  const gotowhatsapp = (e) => {
+    e.preventDefault();
+    if (name && email && phoneNumber.length === 10 && message) {
+      var url =
+        "https://wa.me/918618363099?text=" +
+        "Name: " +
+        name +
+        "%0a" +
+        "Phone: " +
+        phoneNumber +
+        "%0a" +
+        "Email: " +
+        email +
+        "%0a" +
+        "Property Name: " +
+        propertyDetails.propertyName +
+        "%0a" +
+        "Message: " +
+        message;
+      window.open(url, "_blank");
+    } else {
+      setErr("* Please fill all the fields");
+      setTimeout(() => setErr(""), 3000);
+    }
+  };
+
   return (
     <div>
       {/* <!-- breadcrumb start --> */}
       <section className="ratio_40 breadcrumb-section p-0 single-property-images">
         <div className="main-property-slider arrow-image">
-          {/* <div>
-                        <div>
-                            <img
-                                src={propertyDetails.urlarray?.[0]}
-                                className="bg-img"
-                                alt=""
-                                width="1450px"
-                                height="700px"
-                            />
-
-                        </div>
-                    </div>
-                    <div>
-                        <div>
-                            <img
-                                src={propertyDetails.urlarray?.[1]}
-
-                                className="bg-img"
-                                alt=""
-                                width="1450px"
-                                height="700px"
-                            />
-                        </div>
-                    </div>
-                    <div>
-                        <div>
-                            <img
-                                src={propertyDetails.urlarray?.[2]}
-                                className="bg-img"
-                                alt=""
-                                width="1450px"
-                                height="700px"
-                            />
-                        </div>
-                    </div> */}
           <div
             id="carouselExampleIndicators"
             className="carousel slide"
@@ -109,7 +133,7 @@ function PropertyDetails() {
                 />
               </div>
               {propertyDetails.urlarray?.[2] ? (
-                <div className="carousel-item">
+                <div className="carousel-item" key={propertyDetails.id}>
                   <img
                     className="d-block w-100"
                     src={propertyDetails.urlarray?.[2]}
@@ -192,7 +216,7 @@ function PropertyDetails() {
             <div className="single-title">
               <div className="left-single">
                 <div className="d-flex">
-                  <h2 className="mb-0">{propertyDetails.propertyType}</h2>
+                  <h2 className="mb-0">{propertyDetails.propertyName}</h2>
                   <span>
                     <span className="label label-shadow ms-2">
                       {propertyDetails.propertyStatus}
@@ -233,9 +257,9 @@ function PropertyDetails() {
                       />
                       <span>
                         {" "}
-                        {isNaN(propertyDetails.garage)
+                        {isNaN(propertyDetails.balcony)
                           ? 0
-                          : propertyDetails.garage}{" "}
+                          : propertyDetails.balcony}{" "}
                         Halls
                       </span>
                     </div>
@@ -247,7 +271,7 @@ function PropertyDetails() {
                         className="img-fluid ruler-tool"
                         alt=""
                       />
-                      <span>{propertyDetails.area} Area</span>
+                      <span>{propertyDetails.area} Sq ft Area</span>
                     </div>
                   </li>
                   <li>
@@ -314,7 +338,6 @@ function PropertyDetails() {
                   <a
                     href="javascript:void(0)"
                     className="btn btn-dashed btn-pill color-2 ms-md-2 ms-1"
-                    onclick="myFunction()"
                   >
                     <i data-feather="printer"></i>
                     Print
@@ -340,13 +363,18 @@ function PropertyDetails() {
                     gridTemplateColumns: "auto auto auto auto auto",
                   }}
                 >
-                  {propertyDetails.additionalFeatures?.map((features) => {
-                    return (
-                      <span className="btn btn-dashed color-2 btn-pill">
-                        {features}
-                      </span>
-                    );
-                  })}
+                  {propertyDetails.additionalFeatures?.map(
+                    (features, index) => {
+                      return (
+                        <span
+                          className="btn btn-dashed color-2 btn-pill"
+                          key={index}
+                        >
+                          {features}
+                        </span>
+                      );
+                    }
+                  )}
 
                   {/* <span className="btn btn-dashed color-2 ms-1 btn-pill">
                                         Swimming Pool
@@ -443,16 +471,18 @@ function PropertyDetails() {
                           gridTemplateRows: "auto auto auto auto",
                         }}
                       >
-                        {propertyDetails.additionalFeatures?.map((feature) => {
-                          return (
-                            <ul>
-                              <li>
-                                <i className="fas fa-check"></i>
-                                {feature}
-                              </li>
-                            </ul>
-                          );
-                        })}
+                        {propertyDetails.additionalFeatures?.map(
+                          (feature, index) => {
+                            return (
+                              <ul key={index}>
+                                <li>
+                                  <i className="fas fa-check"></i>
+                                  {feature}
+                                </li>
+                              </ul>
+                            );
+                          }
+                        )}
                         {/* <div className="col-xxl-3 col-xl-4 col-6"> */}
                         {/* <ul>
 
@@ -636,7 +666,7 @@ function PropertyDetails() {
                                                 </div>
                                                 <div className="icon-video">
                                                     <a
-                                                        href="javascript:void(0)"
+                                                        href="#"
                                                         data-bs-toggle="modal"
                                                         data-bs-target="#videomodal"
                                                     >
@@ -738,20 +768,24 @@ function PropertyDetails() {
                               ) : (
                                 ""
                               )}
-                              <div
-                                className="carousel-item"
-                                data-slide-number="5"
-                              >
-                                <img
-                                  src={propertyDetails.urlarray?.[5]}
-                                  className="d-block w-100"
-                                  alt="..."
-                                  data-remote={propertyDetails.urlarray?.[5]}
-                                  data-type="image"
-                                  data-toggle="lightbox"
-                                  data-gallery="example-gallery"
-                                />
-                              </div>
+                              {propertyDetails.urlarray?.[5] ? (
+                                <div
+                                  className="carousel-item"
+                                  data-slide-number="5"
+                                >
+                                  <img
+                                    src={propertyDetails.urlarray?.[5]}
+                                    className="d-block w-100"
+                                    alt="..."
+                                    data-remote={propertyDetails.urlarray?.[5]}
+                                    data-type="image"
+                                    data-toggle="lightbox"
+                                    data-gallery="example-gallery"
+                                  />
+                                </div>
+                              ) : (
+                                ""
+                              )}
                             </div>
                           </div>
 
@@ -869,68 +903,47 @@ function PropertyDetails() {
                                       alt="..."
                                     />
                                   </div>
-                                  {propertyDetails.urlarray?.[1] ? (
-                                    <div
-                                      id="carousel-selector-7"
-                                      className="thumb col-4 col-sm-2 px-1 py-2"
-                                      data-target="#myCarousel"
-                                      data-slide-to="7"
-                                    >
-                                      <img
-                                        src={propertyDetails.urlarray?.[1]}
-                                        className="img-fluid"
-                                        alt="..."
-                                      />
-                                    </div>
-                                  ) : (
-                                    ""
-                                  )}
-
-                                  {propertyDetails.urlarray?.[2] ? (
-                                    <div
-                                      id="carousel-selector-7"
-                                      className="thumb col-4 col-sm-2 px-1 py-2"
-                                      data-target="#myCarousel"
-                                      data-slide-to="7"
-                                    >
-                                      <img
-                                        src={propertyDetails.urlarray?.[2]}
-                                        className="img-fluid"
-                                        alt="..."
-                                      />
-                                    </div>
-                                  ) : (
-                                    ""
-                                  )}
-                                  {propertyDetails.urlarray?.[3] ? (
-                                    <div
-                                      id="carousel-selector-7"
-                                      className="thumb col-4 col-sm-2 px-1 py-2"
-                                      data-target="#myCarousel"
-                                      data-slide-to="7"
-                                    >
-                                      <img
-                                        src={propertyDetails.urlarray?.[3]}
-                                        className="img-fluid"
-                                        alt="..."
-                                      />
-                                    </div>
-                                  ) : (
-                                    ""
-                                  )}
+                                  <div
+                                    id="carousel-selector-7"
+                                    className="thumb col-4 col-sm-2 px-1 py-2"
+                                    data-target="#myCarousel"
+                                    data-slide-to="7"
+                                  >
+                                    <img
+                                      src={propertyDetails.urlarray?.[1]}
+                                      className="img-fluid"
+                                      alt="..."
+                                    />
+                                  </div>
+                                  <div
+                                    id="carousel-selector-8"
+                                    className="thumb col-4 col-sm-2 px-1 py-2"
+                                    data-target="#myCarousel"
+                                    data-slide-to="8"
+                                  >
+                                    <img
+                                      src={propertyDetails.urlarray?.[2]}
+                                      className="img-fluid"
+                                      alt="..."
+                                    />
+                                  </div>
+                                  <div
+                                    id="carousel-selector-9"
+                                    className="thumb col-4 col-sm-2 px-1 py-2"
+                                    data-target="#myCarousel"
+                                    data-slide-to="9"
+                                  >
+                                    <img
+                                      src={propertyDetails.urlarray?.[3]}
+                                      className="img-fluid"
+                                      alt="..."
+                                    />
+                                  </div>
                                   <div className="col-2 px-1 py-2"></div>
                                   <div className="col-2 px-1 py-2"></div>
                                 </div>
                               </div> */}
                             </div>
-                            {/* <a className="carousel-control-prev" href="#carousel-thumbs" role="button" data-slide="prev">
-                                                    <span className="carousel-control-prev-icon" aria-hidden="true"></span>
-                                                    <span className="sr-only">Previous</span>
-                                                </a>
-                                                <a className="carousel-control-next" href="#carousel-thumbs" role="button" data-slide="next">
-                                                    <span className="carousel-control-next-icon" aria-hidden="true"></span>
-                                                    <span className="sr-only">Next</span>
-                                                </a> */}
                           </div>
                         </div>
                         {/* <!-- /row --> */}
@@ -942,15 +955,16 @@ function PropertyDetails() {
                   <div className="desc-box">
                     <div className="page-section" id="details">
                       <h4 className="content-title">
-                        Property Details
+                        Investment Details
                         <a
-                          href="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15544.92161730534!2d77.61676435698154!3d12.935772483081344!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae1670ea295a63%3A0x36c29b1d034b0a4d!2sKoramangala%2C%20Bengaluru%2C%20Karnataka!5e0!3m2!1sen!2sin!4v1563449626439!5m2!1sen!2sin"
+                          href="https://www.google.com/maps/place/New+York,+NY,+Bangalore/@40.697488,-73.979681,8z/data=!4m5!3m4!1s0x89c24fa5d33f083b:0xc80b8f06e177fe62!8m2!3d40.7127753!4d-74.0059728?hl=en"
                           target="_blank"
                           rel="noreferrer"
                         >
-                          <i className="fa fa-map-marker-alt"></i> view on map
+                          <i className="fas fa-map-marker-alt"></i> view on map
                         </a>
                       </h4>
+
                       <div className="row">
                         <div className="col-md-6 col-xl-4">
                           <ul className="property-list-details">
@@ -959,7 +973,7 @@ function PropertyDetails() {
                               {propertyDetails.propertyType}
                             </li>
                             <li>
-                              <span>Property ID :</span> {propertyDetails.id}
+                              <span>Property ID :</span> ZOEA245
                             </li>
                             <li>
                               <span>Property status :</span>
@@ -982,9 +996,9 @@ function PropertyDetails() {
                             </li>
                             <li>
                               <span>Balcony :</span>
-                              {isNaN(propertyDetails.garage)
+                              {isNaN(propertyDetails.balcony)
                                 ? 0
-                                : propertyDetails.garage}
+                                : propertyDetails.balcony}
                             </li>
                           </ul>
                         </div>
@@ -1007,11 +1021,11 @@ function PropertyDetails() {
                       </div>
                       <h4 className="content-title mt-4">Attachments</h4>
                       <a
+                        className="attach-file"
                         href={propertyDetails.propertyDocument?.[0]}
                         target="_blank"
-                        className="attach-file"
                       >
-                        <i className="far fa-file-pdf"></i> Property Document{" "}
+                        <i className="far fa-file-pdf"></i>Property Document{" "}
                       </a>
                     </div>
                   </div>
@@ -1031,8 +1045,8 @@ function PropertyDetails() {
                       <h4 className="content-title">Location</h4>
                       <iframe
                         title="realestate location"
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d193595.1583091352!2d-74.11976373946229!3d40.69766374859258!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew+York%2C+NY%2C+Bangalore!5e0!3m2!1sen!2sin!4v1563449626439!5m2!1sen!2sin"
-                        allowfullscreen
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15544.92161730534!2d77.61676435698154!3d12.935772483081344!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae1670ea295a63%3A0x36c29b1d034b0a4d!2sKoramangala%2C%20Bengaluru%2C%20Karnataka!5e0!3m2!1sen!2sin!4v1563449626439!5m2!1sen!2sin"
+                        allowFullScreen
                       ></iframe>
                     </div>
                   </div>
@@ -1146,7 +1160,7 @@ function PropertyDetails() {
                         </div>
                         <button
                           type="submit"
-                          onclick="document.location='submit-property.html'"
+                          onClick="document.location='submit-property.html'"
                           className="btn btn-gradient color-2 btn-pill"
                         >
                           Submit
@@ -1171,7 +1185,7 @@ function PropertyDetails() {
                             alt=""
                           />
                           <div className="media-body ms-2">
-                            <h6>Ella Scott</h6>
+                            <h6>Jonathan Scott</h6>
                             <p>horizon@gmail.com</p>
                           </div>
                         </div>
@@ -1190,14 +1204,17 @@ function PropertyDetails() {
                   </div>
                   <div className="advance-card">
                     <h6>Request exploration</h6>
+                    <p style={{ color: "red", fontSize: "13px" }}>{err}</p>
                     <div className="category-property">
-                      <form>
+                      <form onSubmit={(e) => gotowhatsapp(e)}>
                         <div className="form-group">
                           <input
                             type="text"
                             className="form-control"
                             placeholder="Your Name"
                             required
+                            value={name}
+                            onChange={(e) => setName(e.target.value)}
                           />
                         </div>
                         <div className="form-group">
@@ -1206,6 +1223,8 @@ function PropertyDetails() {
                             className="form-control"
                             placeholder="Email Address"
                             required
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
                           />
                         </div>
                         <div className="form-group">
@@ -1214,11 +1233,11 @@ function PropertyDetails() {
                             className="form-control"
                             name="mobnumber"
                             id="tbNumbers"
-                            oninput="maxLengthCheck(this)"
-                            type="tel"
-                            onkeypress="javascript:return isNumber(event)"
-                            maxlength="9"
+                            type="number"
+                            maxLength="10"
                             required=""
+                            value={phoneNumber}
+                            onChange={(e) => setPhoneNumber(e.target.value)}
                           />
                         </div>
                         <div className="form-group">
@@ -1226,11 +1245,12 @@ function PropertyDetails() {
                             placeholder="Message"
                             className="form-control"
                             rows="3"
+                            value={message}
+                            onChange={(e) => setMessage(e.target.value)}
                           ></textarea>
                         </div>
                         <button
                           type="submit"
-                          onclick="document.location='user-listing.html'"
                           className="btn btn-gradient color-2 btn-block btn-pill"
                         >
                           Submit Request
@@ -1247,45 +1267,54 @@ function PropertyDetails() {
                             className="dropdown-toggle font-rubik angle-down"
                             data-bs-toggle="dropdown"
                           >
-                            <span>Investment Structure</span>
+                            <span style={{ fontSize: "0.86rem" }}>
+                              Investment Structure
+                            </span>
                             <span>
-                              <i className="fas fa-angle-down"></i>
+                              <i
+                                style={{
+                                  position: "absolute",
+                                  right: "14px",
+                                  top: "10px",
+                                }}
+                                className="fas fa-angle-down"
+                              ></i>
                             </span>
                           </span>
                           <div className="dropdown-menu text-start">
                             <a
                               className="dropdown-item"
-                              href="javascript:void(0)"
+                              href="#"
                             >
                               Debt
                             </a>
                             <a
                               className="dropdown-item"
-                              href="javascript:void(0)"
+                              href="#"
                             >
                               Equity
                             </a>
                             <a
                               className="dropdown-item"
-                              href="javascript:void(0)"
+                              href="#"
                             >
                               Mezzanine Debt
                             </a>
                             <a
                               className="dropdown-item"
-                              href="javascript:void(0)"
+                              href="#"
                             >
                               Portfolio
                             </a>
                             <a
                               className="dropdown-item"
-                              href="javascript:void(0)"
+                              href="#"
                             >
                               Preferred Equity
                             </a>
                             <a
                               className="dropdown-item"
-                              href="javascript:void(0)"
+                              href="#"
                             >
                               REIT
                             </a>
@@ -1298,39 +1327,48 @@ function PropertyDetails() {
                             className="dropdown-toggle font-rubik"
                             data-bs-toggle="dropdown"
                           >
-                            <span>Investment Strategy</span>
+                            <span style={{ fontSize: "0.86rem" }}>
+                              Investment Strategy
+                            </span>
                             <span>
-                              <i className="fas fa-angle-down"></i>
+                              <i
+                                style={{
+                                  position: "absolute",
+                                  right: "14px",
+                                  top: "10px",
+                                }}
+                                className="fas fa-angle-down"
+                              ></i>
                             </span>
                           </span>
                           <div className="dropdown-menu text-start">
                             <a
                               className="dropdown-item"
-                              href="javascript:void(0)"
+                              href="#"
                             >
                               Core
                             </a>
                             <a
                               className="dropdown-item"
-                              href="javascript:void(0)"
+                              href="#"
                             >
                               Core Plus
                             </a>
                             <a
                               className="dropdown-item"
-                              href="javascript:void(0)"
+                              href="#"
                             >
                               Value Add
                             </a>
                             <a
                               className="dropdown-item"
-                              href="javascript:void(0)"
+                              href="#"
                             >
                               Cottage
                             </a>
                             <a
                               className="dropdown-item"
-                              href="javascript:void(0)"
+                              href="#"
                             >
                               Opportunistic
                             </a>
@@ -1343,39 +1381,48 @@ function PropertyDetails() {
                             className="dropdown-toggle font-rubik"
                             data-bs-toggle="dropdown"
                           >
-                            <span>Property Location</span>
+                            <span style={{ fontSize: "0.86rem" }}>
+                              Property Location
+                            </span>
                             <span>
-                              <i className="fas fa-angle-down"></i>
+                              <i
+                                style={{
+                                  position: "absolute",
+                                  right: "14px",
+                                  top: "10px",
+                                }}
+                                className="fas fa-angle-down"
+                              ></i>
                             </span>
                           </span>
                           <div className="dropdown-menu text-start">
                             <a
                               className="dropdown-item"
-                              href="javascript:void(0)"
+                              href="#"
                             >
                               Property Location
                             </a>
                             <a
                               className="dropdown-item"
-                              href="javascript:void(0)"
+                              href="#"
                             >
                               New Delhi
                             </a>
                             <a
                               className="dropdown-item"
-                              href="javascript:void(0)"
+                              href="#"
                             >
                               Bangalore
                             </a>
                             <a
                               className="dropdown-item"
-                              href="javascript:void(0)"
+                              href="#"
                             >
                               Mumbai
                             </a>
                             <a
                               className="dropdown-item"
-                              href="javascript:void(0)"
+                              href="#"
                             >
                               Lucknow
                             </a>
@@ -1388,33 +1435,42 @@ function PropertyDetails() {
                             className="dropdown-toggle font-rubik"
                             data-bs-toggle="dropdown"
                           >
-                            <span>Minimun Investment</span>
+                            <span style={{ fontSize: "0.86rem" }}>
+                              Minimun Investment
+                            </span>
                             <span>
-                              <i className="fas fa-angle-down"></i>
+                              <i
+                                style={{
+                                  position: "absolute",
+                                  right: "14px",
+                                  top: "10px",
+                                }}
+                                className="fas fa-angle-down"
+                              ></i>
                             </span>
                           </span>
                           <div className="dropdown-menu text-start">
                             <a
                               className="dropdown-item"
-                              href="javascript:void(0)"
+                              href="#"
                             >
                               Less than 10,000
                             </a>
                             <a
                               className="dropdown-item"
-                              href="javascript:void(0)"
+                              href="#"
                             >
                               10,000 - 25,000
                             </a>
                             <a
                               className="dropdown-item"
-                              href="javascript:void(0)"
+                              href="#"
                             >
                               25,000 - 50,000
                             </a>
                             <a
                               className="dropdown-item"
-                              href="javascript:void(0)"
+                              href="#"
                             >
                               More than 50,000
                             </a>
@@ -1427,33 +1483,42 @@ function PropertyDetails() {
                             className="dropdown-toggle font-rubik"
                             data-bs-toggle="dropdown"
                           >
-                            <span>Minimum Hold Period</span>
+                            <span style={{ fontSize: "0.86rem" }}>
+                              Minimum Hold Period
+                            </span>
                             <span>
-                              <i className="fas fa-angle-down"></i>
+                              <i
+                                style={{
+                                  position: "absolute",
+                                  right: "14px",
+                                  top: "10px",
+                                }}
+                                className="fas fa-angle-down"
+                              ></i>
                             </span>
                           </span>
                           <div className="dropdown-menu text-start">
                             <a
                               className="dropdown-item"
-                              href="javascript:void(0)"
+                              href="#"
                             >
                               0-2 years
                             </a>
                             <a
                               className="dropdown-item"
-                              href="javascript:void(0)"
+                              href="#"
                             >
                               2-5 years
                             </a>
                             <a
                               className="dropdown-item"
-                              href="javascript:void(0)"
+                              href="#"
                             >
                               5-10 years
                             </a>
                             <a
                               className="dropdown-item"
-                              href="javascript:void(0)"
+                              href="#"
                             >
                               More than 10 years
                             </a>
@@ -1469,7 +1534,7 @@ function PropertyDetails() {
                         </a>
                       </div>
                     </div>
-                  </div>{" "} */}
+                  </div> */}
                   {/* <div className="advance-card feature-card">
                                         <h6>Featured</h6>
                                         <div className="feature-slider">
@@ -1645,7 +1710,7 @@ function PropertyDetails() {
                   <div className="property-box">
                     <div className="property-image">
                       <div className="property-slider">
-                        <a href="javascript:void(0)">
+                        <a href="#">
                           <img
                             src="https://firebasestorage.googleapis.com/v0/b/crowdpe-6ba17.appspot.com/o/webassets%2Fproperties%2F10.jpg?alt=media&token=352f7cb1-b6ed-4344-9a00-34996ef23e9a"
                             className="bg-img"
@@ -1654,7 +1719,7 @@ function PropertyDetails() {
                             height="340px"
                           />
                         </a>
-                        <a href="javascript:void(0)">
+                        <a href="#">
                           <img
                             src="https://firebasestorage.googleapis.com/v0/b/crowdpe-6ba17.appspot.com/o/webassets%2Fproperties%2F5.jpg?alt=media&token=5b06a685-0f1c-467f-88c2-100ed2421524"
                             className="bg-img"
@@ -1663,7 +1728,7 @@ function PropertyDetails() {
                             height="340px"
                           />
                         </a>
-                        <a href="javascript:void(0)">
+                        <a href="#">
                           <img
                             src="https://firebasestorage.googleapis.com/v0/b/crowdpe-6ba17.appspot.com/o/webassets%2Fproperties%2F3.jpg?alt=media&token=9429c4ec-99d2-46c6-be3c-4fc961660a64"
                             className="bg-img"
@@ -1672,7 +1737,7 @@ function PropertyDetails() {
                             height="340px"
                           />
                         </a>
-                        <a href="javascript:void(0)">
+                        <a href="#">
                           <img
                             src="https://firebasestorage.googleapis.com/v0/b/crowdpe-6ba17.appspot.com/o/webassets%2Fproperties%2F4.jpg?alt=media&token=2774369b-8a80-4459-8227-c3c245627c70"
                             className="bg-img"
@@ -1743,7 +1808,7 @@ function PropertyDetails() {
                         <a href="/property">
                           <button
                             type="button"
-                            onclick="document.location='/property'"
+                            onClick="document.location='/property'"
                             className="btn btn-dashed btn-pill color-2"
                           >
                             Details
@@ -1757,7 +1822,7 @@ function PropertyDetails() {
                   <div className="property-box">
                     <div className="property-image">
                       <div className="property-slider">
-                        <a href="javascript:void(0)">
+                        <a href="#">
                           <img
                             src="https://firebasestorage.googleapis.com/v0/b/crowdpe-6ba17.appspot.com/o/webassets%2Fproperties%2F14.jpg?alt=media&token=f2cb22cb-7e43-4ee2-bcd6-59e072b5ff30"
                             className="bg-img"
@@ -1766,7 +1831,7 @@ function PropertyDetails() {
                             height="340px"
                           />
                         </a>
-                        <a href="javascript:void(0)">
+                        <a href="#">
                           <img
                             src="https://firebasestorage.googleapis.com/v0/b/crowdpe-6ba17.appspot.com/o/webassets%2Fproperties%2F6.jpg?alt=media&token=805779cc-2507-41d6-a067-ef24eae1504d"
                             className="bg-img"
@@ -1775,7 +1840,7 @@ function PropertyDetails() {
                             height="340px"
                           />
                         </a>
-                        <a href="javascript:void(0)">
+                        <a href="#">
                           <img
                             src="https://firebasestorage.googleapis.com/v0/b/crowdpe-6ba17.appspot.com/o/webassets%2Fproperties%2F10.jpg?alt=media&token=352f7cb1-b6ed-4344-9a00-34996ef23e9a"
                             className="bg-img"
@@ -1784,7 +1849,7 @@ function PropertyDetails() {
                             height="340px"
                           />
                         </a>
-                        <a href="javascript:void(0)">
+                        <a href="#">
                           <img
                             src="https://firebasestorage.googleapis.com/v0/b/crowdpe-6ba17.appspot.com/o/webassets%2Fproperties%2F9%20(1).jpg?alt=media&token=e4d95dc6-45c6-407c-a354-b902e103b3b3"
                             className="bg-img"
@@ -1855,7 +1920,7 @@ function PropertyDetails() {
                         <a href="/property">
                           <button
                             type="button"
-                            onclick="document.location='/property'"
+                            onClick="document.location='/property'"
                             className="btn btn-dashed btn-pill color-2"
                           >
                             Details
@@ -1869,7 +1934,7 @@ function PropertyDetails() {
                   <div className="property-box">
                     <div className="property-image">
                       <div className="property-slider">
-                        <a href="javascript:void(0)">
+                        <a href="#">
                           <img
                             src="https://firebasestorage.googleapis.com/v0/b/crowdpe-6ba17.appspot.com/o/webassets%2Fproperties%2F12.jpg?alt=media&token=0ceb79d7-3c7b-4242-a0a0-c1d1b140db5e"
                             className="bg-img"
@@ -1878,7 +1943,7 @@ function PropertyDetails() {
                             height="340px"
                           />
                         </a>
-                        <a href="javascript:void(0)">
+                        <a href="#">
                           <img
                             src="https://firebasestorage.googleapis.com/v0/b/crowdpe-6ba17.appspot.com/o/webassets%2Fproperties%2F10.jpg?alt=media&token=352f7cb1-b6ed-4344-9a00-34996ef23e9a"
                             className="bg-img"
@@ -1887,7 +1952,7 @@ function PropertyDetails() {
                             height="340px"
                           />
                         </a>
-                        <a href="javascript:void(0)">
+                        <a href="#">
                           <img
                             src="https://firebasestorage.googleapis.com/v0/b/crowdpe-6ba17.appspot.com/o/webassets%2Fproperties%2F6.jpg?alt=media&token=805779cc-2507-41d6-a067-ef24eae1504d"
                             className="bg-img"
@@ -1896,7 +1961,7 @@ function PropertyDetails() {
                             height="340px"
                           />
                         </a>
-                        <a href="javascript:void(0)">
+                        <a href="#">
                           <img
                             src="https://firebasestorage.googleapis.com/v0/b/crowdpe-6ba17.appspot.com/o/webassets%2Fproperties%2F9%20(1).jpg?alt=media&token=e4d95dc6-45c6-407c-a354-b902e103b3b3"
                             className="bg-img"
@@ -1966,7 +2031,7 @@ function PropertyDetails() {
                         <a href="/property">
                           <button
                             type="button"
-                            onclick="document.location='/property'"
+                            onClick="document.location='/property'"
                             className="btn btn-dashed btn-pill color-2"
                           >
                             Details

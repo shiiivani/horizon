@@ -473,7 +473,7 @@ function HomePage() {
                           <div className="details">
                             <h3>
                               <Link to={`/property-details/${list.docId}`}>
-                                <span>{list.propertyName} in</span> {list.city}{" "}
+                                <span>{list.propertyName} in</span> {list.city}
                               </Link>
                             </h3>
                             <span>
@@ -726,14 +726,11 @@ function HomePage() {
                             <span>
                               {list.minimumHoldPeriod} years investment
                             </span>
-                            <Link to={`/property-details/${list.docId}`}>
-                              <button
-                                type="button"
-                                // onClick="document.location='/property'"
-                                className="btn btn-dashed btn-pill color-2"
-                              >
-                                Details
-                              </button>
+                            <Link
+                              to={`/property-details/${list.docId}`}
+                              className="btn btn-dashed btn-pill color-2"
+                            >
+                              Details
                             </Link>
                           </div>
                         </div>

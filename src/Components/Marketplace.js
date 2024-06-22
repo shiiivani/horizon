@@ -710,14 +710,11 @@ function Projects() {
                             <span>
                               {list.minimumHoldPeriod} years investment
                             </span>
-                            <Link to={`/property-details/${list.docId}`}>
-                              <button
-                                type="button"
-                                // onClick="document.place='/property'"
-                                className="btn btn-dashed btn-pill color-2"
-                              >
-                                Details
-                              </button>
+                            <Link
+                              to={`/property-details/${list.docId}`}
+                              className="btn btn-dashed btn-pill color-2"
+                            >
+                              Details
                             </Link>
                           </div>
                         </div>
