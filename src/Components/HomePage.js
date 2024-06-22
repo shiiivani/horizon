@@ -522,7 +522,7 @@ function HomePage() {
                             </li>
                             <li>
                               <Link
-                                href={`/property-details/${list.docId}`}
+                                to={`/property-details/${list.docId}`}
                                 className="btn btn-gradient btn-pill color-2 btn-lg"
                               >
                                 View property
